@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
+/* Remove default styling */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove default styling */
+
+
+/* Styling for login and form stuff */
+
+section {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+    height: 50vh;
+    width: 20vw;
+    margin: 20vh auto;
+}
+
+.greeting {
+    font-family: serif;
+    font-size: 30px;
+    margin-top: 1em;
+}
+
+.login-header {
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin-top: 1em;
+    text-decoration: underline;
+    font-family: 'Montserrat', sans-serif;
+}
+
+form {
+    width: 13vw;
+    height: 20vh;
+    margin: 2em auto;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+.input-box {
+    border-radius: 5px;
+    height: 2em;
+    width: 13vw;
+    background-color: rgba(80, 72, 72, 0.3);
+    color: rgba(39, 34, 34, 0.9);
+    font-size: 14px;
+}
+
+.input-btn {
+    color: white;
+    background-color: black;
+    height: 2.5em;
+    width: 5em;
+    border: 1px solid rgba(192, 192, 192, 0.6);
+    border-radius: 5px;
+    margin-top: 1em;
+    transition: .3s;
+}
+
+.input-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: rgba(192, 192, 192, 0.9);
+    cursor: pointer;
+}
+
+.sign-in-redirect {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-top: 15vh;
+    font-size: 14px;
+}
+
+/* Styling for login and form stuff */
