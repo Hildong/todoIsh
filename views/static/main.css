@@ -16,8 +16,8 @@ section {
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
-    height: 50vh;
-    width: 20vw;
+    height: 25em;
+    width: 20em;
     margin: 20vh auto;
 }
 
@@ -37,7 +37,7 @@ section {
 }
 
 form {
-    width: 13vw;
+    width: 13em;
     height: 20vh;
     margin: 2em auto;
     font-family: 'Montserrat', sans-serif;
@@ -47,7 +47,7 @@ form {
 .input-box {
     border-radius: 5px;
     height: 2em;
-    width: 13vw;
+    width: 13em;
     background-color: rgba(80, 72, 72, 0.3);
     color: rgba(39, 34, 34, 0.9);
     font-size: 14px;
@@ -73,8 +73,16 @@ form {
 .sign-in-redirect {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
-    margin-top: 15vh;
+    margin-top: 1em;
     font-size: 14px;
+}
+
+.signupMsg {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 5em;
+    font-size: 14px;
+    color: red;
 }
 
 /* Styling for login and form stuff */

@@ -2,8 +2,11 @@ const express = require("express");
 const exhbs = require("express-handlebars");
 const path = require("path");
 const bodyParser = require("body-parser");
+const db = require("./usersDB.js")
+
 const app = express();
 const port = 8000 || process.env.PORT;
+
 
 
 //MIDDLEWARE
@@ -35,6 +38,12 @@ app.get("/signup", (req, res) => {
     res.render("signup")
 });
 
+//Test route
+app.get("/api", (req, res) => {
+    res.send("hello");
+})
+
+//404 Route
 app.get("*", (req, res) => {
     res.send("404 error, route not found :(");
 })
@@ -42,8 +51,13 @@ app.get("*", (req, res) => {
 
 //POST requests for user data
 app.post("/signupdata", (req, res) => {
-    res.send(`Name: ${req.body.username}<br>Password: ${req.body.pwd}<br>Password confirmation: ${req.body.pwdconfirmation}`);
+    if(req.body.pwd != req.body.pwdconfirmation) {
+        res.render("signup", { signupMsg: "Passwords not matching" })
+    } else {
+        db.createUser(req.body.username, req.body.pwd, res);
+    }
 })
+
 
 //Starting and opening port for requests
 app.listen(port, () => console.log(`Listening to requests on port ${port}`));
