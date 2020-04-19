@@ -3,6 +3,7 @@ const exhbs = require("express-handlebars");
 const path = require("path");
 const bodyParser = require("body-parser");
 const db = require("./usersDB.js")
+const jwt = require("jsonwebtoken");
 
 const app = express();
 const port = 8000 || process.env.PORT;
@@ -56,6 +57,10 @@ app.post("/signupdata", (req, res) => {
     } else {
         db.createUser(req.body.username, req.body.pwd, res);
     }
+})
+
+app.post("/signindata", (req, res) => {
+    db.login(req.body.username, req.body.pwd, res);
 })
 
 

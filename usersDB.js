@@ -59,5 +59,27 @@ function createUser(uname, pwd, response) {
     })
 }
 
+//Function for authenticating user
+function login(uname, pwd, response) {
+    //Checking for username to see if such a user exists on login
+    newAccount.findOne({ "username": uname }, (err, user) => {
+        //Console.log potential errors
+        if(err) {
+            console.log(err)
+        }
+
+        //If user exists, check if inputted password matches users password
+        if(user) {
+            if(user.password === pwd) {
+                response.render("login", { loginErr: `Hello ${user.username}` });
+            } else {
+                response.render("login", { loginErr: "Username and password doesn't match" })
+            }
+        } else {
+            response.render("login", { loginErr: "No user with that username exists" })
+        }
+    })
+}
+
 //Export modules for use in the main server app
-module.exports = { createUser }
+module.exports = { createUser, login }
