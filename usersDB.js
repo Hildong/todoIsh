@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const Schema = mongoose.Schema;
 
 //Try to connect to user account database
@@ -71,7 +73,9 @@ function login(uname, pwd, response) {
         //If user exists, check if inputted password matches users password
         if(user) {
             if(user.password === pwd) {
-                response.render("login", { loginErr: `Hello ${user.username}` });
+                //Use JWT to authorize and send a token to user 
+                module.exports = token = jwt.sign({ _id: user._id }, process.env.SECRET_TOKEN, { expiresIn: "30min" });
+                response.send(token);
             } else {
                 response.render("login", { loginErr: "Username and password doesn't match" })
             }

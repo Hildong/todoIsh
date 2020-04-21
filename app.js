@@ -3,7 +3,7 @@ const exhbs = require("express-handlebars");
 const path = require("path");
 const bodyParser = require("body-parser");
 const db = require("./usersDB.js")
-const jwt = require("jsonwebtoken");
+const privateRoutes = require("./privateRoutes.js");
 
 const app = express();
 const port = 8000 || process.env.PORT;
@@ -11,6 +11,9 @@ const port = 8000 || process.env.PORT;
 
 
 //MIDDLEWARE
+
+//Route middleware
+app.use("/api/user", privateRoutes);
 
 //Handlebars middleware
 app.engine('handlebars', exhbs({
