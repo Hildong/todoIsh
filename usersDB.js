@@ -1,7 +1,14 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
+const express = require("express")
+const app = express();
+const cookieParser = require("cookie-parser");
 const Schema = mongoose.Schema;
+
+
+app.use(cookieParser())
+
 
 //Try to connect to user account database
 mongoose.connect("mongodb://localhost:27017/todo_app", {
@@ -62,7 +69,7 @@ function createUser(uname, pwd, response) {
 }
 
 //Function for authenticating user
-function login(uname, pwd, response) {
+function login(uname, pwd, request, response) {
     //Checking for username to see if such a user exists on login
     newAccount.findOne({ "username": uname }, (err, user) => {
         //Console.log potential errors
@@ -74,8 +81,9 @@ function login(uname, pwd, response) {
         if(user) {
             if(user.password === pwd) {
                 //Use JWT to authorize and send a token to user 
-                module.exports = token = jwt.sign({ _id: user._id }, process.env.SECRET_TOKEN, { expiresIn: "30min" });
-                response.send(token);
+                let payload = { _id: user._id };
+                const token = jwt.sign({payload}, process.env.SECRET_TOKEN);
+                response.cookie("token", token, { expire: new Date() + 9999 });
             } else {
                 response.render("login", { loginErr: "Username and password doesn't match" })
             }
@@ -84,6 +92,8 @@ function login(uname, pwd, response) {
         }
     })
 }
+
+
 
 //Export modules for use in the main server app
 module.exports = { createUser, login }
