@@ -71,29 +71,10 @@ function createUser(uname, pwd, response) {
 //Function for authenticating user
 function login(uname, pwd, request, response) {
     //Checking for username to see if such a user exists on login
-    newAccount.findOne({ "username": uname }, (err, user) => {
-        //Console.log potential errors
-        if(err) {
-            console.log(err)
-        }
-
-        //If user exists, check if inputted password matches users password
-        if(user) {
-            if(user.password === pwd) {
-                //Use JWT to authorize and send a token to user 
-                let payload = { _id: user._id };
-                const token = jwt.sign({payload}, process.env.SECRET_TOKEN);
-                response.cookie("token", token, { expire: new Date() + 9999 });
-            } else {
-                response.render("login", { loginErr: "Username and password doesn't match" })
-            }
-        } else {
-            response.render("login", { loginErr: "No user with that username exists" })
-        }
-    })
 }
 
 
 
 //Export modules for use in the main server app
 module.exports = { createUser, login }
+module.exports = newAccount

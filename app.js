@@ -5,11 +5,26 @@ const bodyParser = require("body-parser");
 const db = require("./usersDB.js")
 const cookieParser = require("cookie-parser");
 const privateRoutes = require("./privateRoutes.js");
+const jwt = require("jsonwebtoken")
 const verify = require("./tokenVerification.js");
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
+
+//Try to connect to user account database
+mongoose.connect("mongodb://localhost:27017/todo_app", {
+     useNewUrlParser: true,
+     useUnifiedTopology: true 
+    }).then(() => {
+        console.log("Connected to database successfully");
+    }).catch(err => {
+        console.log(err);
+});
 
 let day = new Date().getDay();
 const app = express();
 const port = 8000 || process.env.PORT;
+let newAccount = mongoose.model('newAccount');
 
 
 
@@ -64,7 +79,26 @@ app.post("/signupdata", (req, res) => {
 })
 
 app.post("/signindata", async (req, res) => {
-    db.login(req.body.username, req.body.pwd, req, res);
+    newAccount.findOne({ "username": req.body.username }, (err, user) => {
+        //Console.log potential errors
+        if(err) {
+            console.log(err)
+        }
+
+        //If user exists, check if inputted password matches users password
+        if(user) {
+            if(user.password === req.body.pwd) {
+                //Use JWT to authorize and send a token to user 
+                let payload = { _id: user._id };
+                const token = jwt.sign({payload}, process.env.SECRET_TOKEN);
+                res.cookie("token", token).send("ues");
+            } else {
+                res.render("login", { loginErr: "Username and password doesn't match" })
+            }
+        } else {
+            res.render("login", { loginErr: "No user with that username exists" })
+        }
+    })
 })
 
 

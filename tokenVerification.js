@@ -8,10 +8,12 @@ require("dotenv").config()
 app.use(cookieParser())
 
 module.exports = function (req, res, next) {
-    const authHeader = req.cookies.token;
-    console.log(authHeader)
-    
-    if(authHeader === null || authHeader === undefined) return res.status(401).send("Missing token")
+    //const authHeader = req.cookies['autorization'];
+    const authHeader = req.headers["cookie"].split(" ")[2]
+    const token = authHeader.substring(6)
+    console.log(token);
+    next();
+    /*if(authHeader === null || authHeader === undefined) return res.status(401).send("Missing token")
 
     jwt.verify(authHeader, process.env.SECRET_TOKEN, (err, user) => {
         if(err) {
@@ -21,5 +23,5 @@ module.exports = function (req, res, next) {
             req.user = user;
             next();
         }
-    })
+    })*/
 }
