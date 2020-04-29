@@ -12,13 +12,14 @@
 
 /* Styling for login and form stuff */
 
-section {
+.form-section {
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
     height: 25em;
     width: 20em;
     margin: 20vh auto;
+    overflow: hidden;
 }
 
 .greeting {

@@ -6,7 +6,6 @@ const db = require("./usersDB.js")
 const cookieParser = require("cookie-parser");
 const privateRoutes = require("./privateRoutes.js");
 const jwt = require("jsonwebtoken")
-const verify = require("./tokenVerification.js");
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
@@ -16,7 +15,7 @@ mongoose.connect("mongodb://localhost:27017/todo_app", {
      useNewUrlParser: true,
      useUnifiedTopology: true 
     }).then(() => {
-        console.log("Connected to database successfully");
+        console.log("Server connected to database successfully");
     }).catch(err => {
         console.log(err);
 });
@@ -90,8 +89,8 @@ app.post("/signindata", async (req, res) => {
             if(user.password === req.body.pwd) {
                 //Use JWT to authorize and send a token to user 
                 let payload = { _id: user._id };
-                const token = jwt.sign({payload}, process.env.SECRET_TOKEN);
-                res.cookie("token", token).send("ues");
+                const token = jwt.sign({payload}, process.env.SECRET_TOKEN, { expiresIn: "10m" });
+                res.cookie("token", token).redirect("/api/user");
             } else {
                 res.render("login", { loginErr: "Username and password doesn't match" })
             }
@@ -100,16 +99,6 @@ app.post("/signindata", async (req, res) => {
         }
     })
 })
-
-
-//Private routes
-/*app.get("/api/user", verify, (req, res) => {
-    res.json({
-        title: `Hello brother`,
-        time: `What a beautiful ${day}`
-    })
-    
-})*/
 
 
 //404 Route

@@ -8,14 +8,13 @@ require("dotenv").config()
 app.use(cookieParser())
 
 module.exports = function (req, res, next) {
-    //const authHeader = req.cookies['autorization'];
-    const authHeader = req.headers["cookie"].split(" ")[2]
-    const token = authHeader.substring(6)
-    console.log(token);
-    next();
-    /*if(authHeader === null || authHeader === undefined) return res.status(401).send("Missing token")
+    let token = undefined
+    const authHeader = req.headers["cookie"].split(" ")[1]
+    if(authHeader !== undefined) {
+        token = authHeader.substring(6)
+    }else if(token === null || token === undefined) return res.status(401).send("Missing token")
 
-    jwt.verify(authHeader, process.env.SECRET_TOKEN, (err, user) => {
+    jwt.verify(token, process.env.SECRET_TOKEN, (err, user) => {
         if(err) {
             console.log(err)
             res.status(403).send("Access denied");
@@ -23,5 +22,5 @@ module.exports = function (req, res, next) {
             req.user = user;
             next();
         }
-    })*/
+    })
 }

@@ -15,7 +15,7 @@ mongoose.connect("mongodb://localhost:27017/todo_app", {
      useNewUrlParser: true,
      useUnifiedTopology: true 
     }).then(() => {
-        console.log("Connected to database successfully");
+        console.log("userDB connected to database successfully");
     }).catch(err => {
         console.log(err);
 });
@@ -69,12 +69,23 @@ function createUser(uname, pwd, response) {
 }
 
 //Function for authenticating user
-function login(uname, pwd, request, response) {
-    //Checking for username to see if such a user exists on login
+function getUserFromID(request, response, userID) {
+    //Search in the database for the user, using the decoded tokens ID
+    newAccount.findOne({ "_id": userID }, (err, user) => {
+        if(err) return console.log(err)
+
+        //If the user exist, return the data from the user 
+        if(user) {
+            response.json({
+                title: `Hello ${user.username}`,
+                time: `What a beautiful day`
+            })
+        } 
+    })
 }
 
 
 
 //Export modules for use in the main server app
-module.exports = { createUser, login }
+module.exports = { createUser, getUserFromID }
 module.exports = newAccount
