@@ -87,3 +87,12 @@ form {
 }
 
 /* Styling for login and form stuff */
+
+
+/* TODO page where users todos are displayed */
+
+.todo-nav {
+    background-color: red;
+    height: 2vh;
+    width: 100vw;
+}

@@ -1,10 +1,12 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken")
 const jwtDecode = require("jwt-decode")
+const exhbs = require("express-handlebars");
+const path = require("path");
 const verify = require("./tokenVerification.js");
 const mongoose = require("mongoose");
-
-const Schema = mongoose.Schema;
+const express = require("express");
+const app = express()
 
 //Try to connect to user account database
 mongoose.connect("mongodb://localhost:27017/todo_app", {
@@ -16,8 +18,9 @@ mongoose.connect("mongodb://localhost:27017/todo_app", {
         console.log(err);
 });
 let newAccount = mongoose.model('newAccount');
+//app.use('/static', express.static(path.join(__dirname, "views/static")))
 
-router.get("/", verify, (req, res) => {
+router.get("/", (req, res) => {
     let token = undefined
     const authHeader = req.headers["cookie"].split(" ")[1]
     if(authHeader !== undefined) {
@@ -31,11 +34,7 @@ router.get("/", verify, (req, res) => {
 
         //If the user exist, return the data from the user 
         if(user) {
-            res.json({
-                greeting: `Hello ${user.username}`,
-                pwd: `Your password is ${user.password}`,
-                _id: `Your userID is ${user._id}`
-            })
+            res.render("todo", { accountStuff: `Logged in as ${user.username}` })
         } 
     })
 })
