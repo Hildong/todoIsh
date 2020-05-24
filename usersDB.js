@@ -87,5 +87,5 @@ function getUserFromID(request, response, userID) {
 
 
 //Export modules for use in the main server app
+//module.exports = newAccount
 module.exports = { createUser, getUserFromID }
-module.exports = newAccount

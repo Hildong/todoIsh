@@ -18,9 +18,10 @@ mongoose.connect("mongodb://localhost:27017/todo_app", {
         console.log(err);
 });
 let newAccount = mongoose.model('newAccount');
-//app.use('/static', express.static(path.join(__dirname, "views/static")))
+app.use('/static', express.static(path.join(__dirname, "/views/static")))
 
-router.get("/", (req, res) => {
+
+router.get("/", /*verify,*/ (req, res) => {
     let token = undefined
     const authHeader = req.headers["cookie"].split(" ")[1]
     if(authHeader !== undefined) {

@@ -64,7 +64,7 @@ app.get("/signup", (req, res) => {
 
 //Test route
 app.get("/api", (req, res) => {
-    res.send("hello");
+    res.render("hello");
 })
 
 
@@ -89,7 +89,7 @@ app.post("/signindata", async (req, res) => {
             if(user.password === req.body.pwd) {
                 //Use JWT to authorize and send a token to user 
                 let payload = { _id: user._id };
-                const token = jwt.sign({payload}, process.env.SECRET_TOKEN, { expiresIn: "1" });
+                const token = jwt.sign({payload}, process.env.SECRET_TOKEN, { expiresIn: "10s" });
                 res.cookie("token", token).redirect("/api/user");
             } else {
                 res.render("login", { loginErr: "Username and password doesn't match" })

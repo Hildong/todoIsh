@@ -9,6 +9,9 @@
 
 /* Remove default styling */
 
+body {
+    background-color: green;
+}
 
 /* Styling for login and form stuff */
 
@@ -95,4 +98,8 @@ form {
     background-color: red;
     height: 2vh;
     width: 100vw;
+}
+
+.account {
+    color: red;
 }
