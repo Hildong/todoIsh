@@ -33,7 +33,7 @@ router.get("/", verify, (req, res) => {
     newAccount.findOne({ "_id": decoded.payload._id }, (err, user) => {
         if(err) return console.log(err)
 
-        //If the user exist, return the data from the user 
+        //If the user exist, return the data from the user
         if(user) {
             res.render("todo", { accountStuff: `Logged in as ${user.username}` })
         } 
