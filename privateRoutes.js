@@ -21,7 +21,7 @@ let newAccount = mongoose.model('newAccount');
 app.use('/static', express.static(path.join(__dirname, "/views/static")))
 
 
-router.get("/", /*verify,*/ (req, res) => {
+router.get("/", verify, (req, res) => {
     let token = undefined
     const authHeader = req.headers["cookie"].split(" ")[1]
     if(authHeader !== undefined) {

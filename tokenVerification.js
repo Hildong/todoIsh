@@ -10,8 +10,10 @@ app.use(cookieParser())
 module.exports = function (req, res, next) {
     let token = undefined
     const authHeader = req.headers["cookie"].split(" ")[1]
+    console.log(authHeader)
     if(authHeader !== undefined) {
         token = authHeader.substring(6)
+        console.log(token)
     }else if(token === null || token === undefined) return res.status(401).send("Missing token")
 
     jwt.verify(token, process.env.SECRET_TOKEN, (err, user) => {
