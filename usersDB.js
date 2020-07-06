@@ -31,8 +31,17 @@ let signupSchema = new Schema({
     }
 });
 
-let newAccount = mongoose.model('newAccount', signupSchema);
+let todoSchema = new Schema({
+    todo: {
+        type: String
+    },
+    usersID: {
+        type: String
+    }
+})
 
+let newAccount = mongoose.model('newAccount', signupSchema);
+let createNewTodo = mongoose.model("todo", todoSchema);
 
 //Function for creating user
 function createUser(uname, pwd, response) {
@@ -62,8 +71,7 @@ function createUser(uname, pwd, response) {
                     console.log(err)
                 })
             
-            response.send(`Name: ${uname}<br>Password: ${pwd}`);
-
+                response.redirect("/");
         }
     })
 }
@@ -84,8 +92,24 @@ function getUserFromID(request, response, userID) {
     })
 }
 
+function createTodo(request, response, todoName, userID) {
+    let newTodo  = new createNewTodo();
 
+    newTodo.todo = todoName;
+    newTodo.usersID = userID;
+
+    newTodo
+        .save()
+        .then(result => {
+            console.log(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+        response.redirect("/api/user")
+}
 
 //Export modules for use in the main server app
 //module.exports = newAccount
-module.exports = { createUser, getUserFromID }
+module.exports = { createUser, getUserFromID, createTodo }

@@ -20,7 +20,7 @@ mongoose.connect("mongodb://localhost:27017/todo_app", {
 let newAccount = mongoose.model('newAccount');
 app.use('/static', express.static(path.join(__dirname, "/views/static")))
 
-
+//Landing page when logging in
 router.get("/", verify, (req, res) => {
     let token = undefined
     const authHeader = req.headers["cookie"].split(" ")[1]
@@ -32,12 +32,20 @@ router.get("/", verify, (req, res) => {
     //Search in the database for the user, using the decoded tokens ID
     newAccount.findOne({ "_id": decoded.payload._id }, (err, user) => {
         if(err) return console.log(err)
-
+ 
         //If the user exist, return the data from the user
         if(user) {
-            res.render("todo", { accountStuff: `Logged in as ${user.username}` })
+            res.render("todo", { accountStuff: user.username})
         } 
+
+
     })
+});
+
+// Redirect from logout button on ladning page to remove cookie and redirect to logging page
+router.get("/logout", (req, res) => {
+    res.clearCookie('token');
+    res.redirect("/");
 })
 
 router.get("*", (req, res) => {

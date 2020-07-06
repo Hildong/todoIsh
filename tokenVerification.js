@@ -14,7 +14,7 @@ module.exports = function (req, res, next) {
     if(authHeader !== undefined) {
         token = authHeader.substring(6)
         console.log(token)
-    }else if(token === null || token === undefined) return res.status(401).send("Missing token")
+    }else if(token === null || token === undefined) return res.redirect("/")
 
     jwt.verify(token, process.env.SECRET_TOKEN, (err, user) => {
         if(err) {
