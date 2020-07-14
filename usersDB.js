@@ -11,7 +11,7 @@ app.use(cookieParser())
 
 
 //Try to connect to user account database
-mongoose.connect("mongodb://localhost:27017/todo_app", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/todo_app", {
      useNewUrlParser: true,
      useUnifiedTopology: true 
     }).then(() => {

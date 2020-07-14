@@ -8,10 +8,11 @@ const privateRoutes = require("./privateRoutes.js");
 const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose");
 const verify = require("./tokenVerification.js");
+require('dotenv').config()
 
 
 //Try to connect to user account database
-mongoose.connect("mongodb://localhost:27017/todo_app", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/todo_app", {
      useNewUrlParser: true,
      useUnifiedTopology: true 
     }).then(() => {
@@ -22,7 +23,7 @@ mongoose.connect("mongodb://localhost:27017/todo_app", {
 
 let day = new Date().getDay();
 const app = express();
-const port = 8000 || process.env.PORT;
+const port = process.env.PORT || 8000;
 let newAccount = mongoose.model('newAccount');
 let createNewTodo = mongoose.model("todo");
 
