@@ -64,11 +64,11 @@ router.get("/", verify, (req, res) => {
 // Redirect from logout button on ladning page to remove cookie and redirect to logging page
 router.get("/logout", (req, res) => {
     res.clearCookie('token');
-    res.redirect("/");
+    res.redirect("https://todoappbyphiliphilding.herokuapp.com/");
 })
 
 router.get("*", (req, res) => {
-    res.redirect("/api/user")
+    res.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user")
 })
 
 module.exports = router 

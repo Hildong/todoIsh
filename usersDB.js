@@ -100,9 +100,9 @@ function createTodo(request, response, todoName, userID) {
         }
 
         if(todo) {
-            response.redirect("/api/user")
+            response.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user")
         } else if(todoName.length > 40) {
-            response.redirect("/api/user");
+            response.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user");
         } else {
             let newTodo  = new createNewTodo();
 
@@ -118,7 +118,7 @@ function createTodo(request, response, todoName, userID) {
                     console.log(err);
                 })
         
-                response.redirect("/api/user")
+                response.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user")
         }
     })
 
@@ -130,10 +130,10 @@ function deleteTodo(request, response, todoName, userName) {
 
         if(todo) {
             todo.remove();
-            response.redirect("/api/user")
+            response.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user")
         } else {
             console.log(todoName + " " + userName)
-            response.redirect("/api/user")
+            response.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user")
 
         }
     }) 

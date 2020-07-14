@@ -71,7 +71,7 @@ app.get("/api", (req, res) => {
 
 
 //POST requests for user data
-app.post("/signupdata", (req, res) => {
+app.post("https://todoappbyphiliphilding.herokuapp.com/signupdata", (req, res) => {
     if(req.body.pwd != req.body.pwdconfirmation) {
         res.render("signup", { signupMsg: "Passwords not matching" })
     } else {
@@ -79,7 +79,7 @@ app.post("/signupdata", (req, res) => {
     }
 })
 
-app.post("/signindata", async (req, res) => {
+app.post("https://todoappbyphiliphilding.herokuapp.com/signindata", async (req, res) => {
     newAccount.findOne({ "username": req.body.username }, (err, user) => {
         //Console.log potential errors
         if(err) {
@@ -93,7 +93,7 @@ app.post("/signindata", async (req, res) => {
                 let payload = { _id: user._id };
                 const token = jwt.sign({payload}, process.env.SECRET_TOKEN, { expiresIn: "1h" });
                 console.log(token + " sa")
-                res.cookie("token", token).redirect("/api/user");
+                res.cookie("token", token).redirect("https://todoappbyphiliphilding.herokuapp.com/api/user");
             } else {
                 res.render("login", { loginErr: "Username and password doesn't match" })
             }
@@ -103,7 +103,7 @@ app.post("/signindata", async (req, res) => {
     })
 })
 
-app.post("/addtodo", (req, res) => {
+app.post("https://todoappbyphiliphilding.herokuapp.com/addtodo", (req, res) => {
     if(req.body.todo != "" && req.body.todo != " ") {
         db.createTodo(req, res, req.body.todo, req.body.accountName);
         console.log("Successfully added todo");
@@ -112,7 +112,7 @@ app.post("/addtodo", (req, res) => {
     }
 })
 
-app.post("/deletetodo", (req, res) => {
+app.post("https://todoappbyphiliphilding.herokuapp.com/deletetodo", (req, res) => {
     db.deleteTodo(req, res, req.body.delete_todo, req.body.usersName)
     console.log(req.body)
 })

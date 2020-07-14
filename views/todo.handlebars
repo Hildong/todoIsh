@@ -1,15 +1,15 @@
 <nav class="todo-nav">
     <span class="logo">Todoish</span>
-    <span class="account">Logged in as <b>{{ accountStuff }}</b> | <a class="logout-btn" href="http://localhost:8000/api/user/logout">Logout</a></span>
+    <span class="account">Logged in as <b>{{ accountStuff }}</b> | <a class="logout-btn" href="https://todoappbyphiliphilding.herokuapp.com/api/user/logout">Logout</a></span>
 </nav>
-<form action="http://localhost:8000/addtodo" class="create-todo-form" method="POST">
+<form action="https://todoappbyphiliphilding.herokuapp.com/addtodo" class="create-todo-form" method="POST">
     <p class="signupMsg">*Todos may not be over 40 characters, nor can multiple of same todo exist</p>
     <input type="text" placeholder="Todo..." class="todo-input" name="todo" required maxlength="40">
     <input type="text" style="display:none;" class="username" name="accountName" value="{{accountStuff}}">
     <input type="submit" value="Add" class="submit">
 </form>
 <div class="list-of-todos">
-    <form action="http://localhost:8000/deletetodo" class="todo-btn-form" method="POST">
+    <form action="https://todoappbyphiliphilding.herokuapp.com/deletetodo" class="todo-btn-form" method="POST">
         <input type="text" style="display:none;" class="username" name="usersName" value={{accountStuff}}>
         {{#each todos}}
             <div class="todo">
