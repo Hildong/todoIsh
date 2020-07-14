@@ -14,12 +14,12 @@ module.exports = function (req, res, next) {
     if(authHeader !== undefined) {
         token = authHeader.substring(6)
         console.log(token)
-    }else if(token === null || token === undefined) return res.redirect("/")
+    }else if(token === null || token === undefined) return res.status(403).send("token null or undefined");
 
     jwt.verify(token, process.env.SECRET_TOKEN, (err, user) => {
         if(err) {
             console.log(err)
-            res.redirect("/")
+            res.status(403).send("Access denied");
         } else {  
             req.user = user;
             next();
