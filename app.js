@@ -7,6 +7,8 @@ const cookieParser = require("cookie-parser");
 const privateRoutes = require("./privateRoutes.js");
 const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose");
+const verify = require("./tokenVerification.js");
+
 
 //Try to connect to user account database
 mongoose.connect("mongodb://localhost:27017/todo_app", {
@@ -22,6 +24,7 @@ let day = new Date().getDay();
 const app = express();
 const port = 8000 || process.env.PORT;
 let newAccount = mongoose.model('newAccount');
+let createNewTodo = mongoose.model("todo");
 
 
 
@@ -87,7 +90,7 @@ app.post("/signindata", async (req, res) => {
             if(user.password === req.body.pwd) {
                 //Use JWT to authorize and send a token to user 
                 let payload = { _id: user._id };
-                const token = jwt.sign({payload}, process.env.SECRET_TOKEN, { expiresIn: "3m" });
+                const token = jwt.sign({payload}, process.env.SECRET_TOKEN, { expiresIn: "1h" });
                 res.cookie("token", token).redirect("/api/user");
             } else {
                 res.render("login", { loginErr: "Username and password doesn't match" })
@@ -100,14 +103,16 @@ app.post("/signindata", async (req, res) => {
 
 app.post("/addtodo", (req, res) => {
     if(req.body.todo != "" && req.body.todo != " ") {
-        const authHeader = req.headers["cookie"].split(" ")[1].toString();
-        const payload = jwt.verify(authHeader.split(".")[1], process.env.SECRET_TOKEN);
-        console.log(payload)
-        //db.createTodo(req, res, req.body.todo, req.body.username);
+        db.createTodo(req, res, req.body.todo, req.body.accountName);
         console.log("Successfully added todo");
     } else {
         res.render("todo", {todoErrMsg: "Cannot add empty todo"});
     }
+})
+
+app.post("/deletetodo", (req, res) => {
+    db.deleteTodo(req, res, req.body.delete_todo, req.body.usersName)
+    console.log(req.body)
 })
 
 //404 Route

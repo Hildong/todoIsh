@@ -93,23 +93,52 @@ function getUserFromID(request, response, userID) {
 }
 
 function createTodo(request, response, todoName, userID) {
-    let newTodo  = new createNewTodo();
-
-    newTodo.todo = todoName;
-    newTodo.usersID = userID;
-
-    newTodo
-        .save()
-        .then(result => {
-            console.log(result);
-        })
-        .catch(err => {
+    //Check if todo already exists
+    createNewTodo.findOne({ "todo": todoName, "usersID": userID }, (err, todo) => {
+        if(err) {
             console.log(err);
-        })
+        }
 
-        response.redirect("/api/user")
+        if(todo) {
+            response.redirect("/api/user")
+        } else if(todoName.length > 40) {
+            response.redirect("/api/user");
+        } else {
+            let newTodo  = new createNewTodo();
+
+            newTodo.todo = todoName;
+            newTodo.usersID = userID;
+        
+            newTodo
+                .save()
+                .then(result => {
+                    console.log(result);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        
+                response.redirect("/api/user")
+        }
+    })
+
+}
+
+function deleteTodo(request, response, todoName, userName) {
+    createNewTodo.findOne({ "usersID": userName, "todo": todoName }, (err, todo) => {
+        if(err) console.log(err);
+
+        if(todo) {
+            todo.remove();
+            response.redirect("/api/user")
+        } else {
+            console.log(todoName + " " + userName)
+            response.redirect("/api/user")
+
+        }
+    }) 
 }
 
 //Export modules for use in the main server app
 //module.exports = newAccount
-module.exports = { createUser, getUserFromID, createTodo }
+module.exports = { createUser, getUserFromID, createTodo, deleteTodo }

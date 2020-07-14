@@ -19,7 +19,7 @@ module.exports = function (req, res, next) {
     jwt.verify(token, process.env.SECRET_TOKEN, (err, user) => {
         if(err) {
             console.log(err)
-            res.status(403).send("Access denied");
+            res.redirect("/")
         } else {  
             req.user = user;
             next();

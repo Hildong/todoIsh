@@ -1,5 +1,6 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
     body{
         margin: 0;
@@ -8,6 +9,7 @@
 
     .todo-nav {
         height: 10vh;
+        width: 100vw;
         border-bottom: .5px solid rgba(0, 0, 0, 0.3);
         -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
         -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
@@ -45,12 +47,12 @@
         color: rgb(194, 216, 154);
     }
 
-    form {
-        width: 35em;
-        margin: 0 auto;
+    .create-todo-form {
+        width: 35rem;
+        margin: 3rem auto;
     }
 
-    .todo {
+    .todo-input {
         height: 2rem;
         width: 29rem;
         font-size: 1rem;
@@ -62,6 +64,9 @@
         border-radius: 10px;
         background-color:rgb(194, 216, 154);
         transition: .3s;
+        background-color:rgb(0, 0, 0);
+        font-family: "Montserrat", sans-serif;
+        color: rgb(200, 202, 200);
     }
 
     .submit:hover {
@@ -70,11 +75,174 @@
     }
     
     .signupMsg {
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
-    margin-top: 5em;
-    font-size: 14px;
-    color: red;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        margin-top: 1em;
+        margin-bottom: 1rem;
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.8);
+    }
+
+    .list-of-todos {
+        margin: 3rem auto;
+        width: 35rem;
+        height: 60vh;
+    }
+
+    .delete-btn {
+        margin-right: .5rem;
+    }
+
+    .delete-btn, .edit-btn {
+        float: right;
+        border-radius: 5px;
+        width: 4.5rem;
+        height: 1.5rem;
+        transition: .3s;
+        -webkit-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+        box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+    }
+
+    .delete-btn:hover, .edit-btn:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .todo {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        margin-top: 1rem;
+        margin-left: 1rem;
+        width: 100%;
+        height: 2rem;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .todo-box {
+        border: 1px solid red;
+        width: 35rem;
+    }
+
+    .todo-btn-form {
+        margin: -1.5rem;
+        margin-right: .5rem;
+    }
+
+    .developer {
+        font-size: .8rem;
+        padding-top: .5rem;
+        font-family: 'Open Sans', sans-serif;
+        width: 13rem;
+    }
+
+    @media only screen and  (min-width: 400px) and (max-width: 1000px) {
+        /* For tablets: */
+        .todo-nav {
+            height: 6rem;
+            width: 100vw;
+            border-bottom: .5px solid rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
+        }
+
+        .logo {
+            margin-left: 1rem;
+            position: absolute;
+            margin-top: 1.6rem;     
+            font-size: 2rem;
+        }
+
+        .account {
+            float: right;
+            margin-right: 1.5rem;
+            margin-top: 1.6rem;
+            font-size: 1rem;
+            font-size: 2rem;
+        }
+
+        .signupMsg {
+            text-align: center;
+            font-family: "Montserrat", sans-serif;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 18px;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .create-todo-form {
+            width: 41rem;
+            margin: 3rem auto;
+        }
+
+        .todo-input {
+            height: 3.5rem;
+            width: 34rem;
+            font-size: 2rem;
+            border: 1px solid rgba(0,0,0,0.5);
+        }
+
+        .submit {
+            height: 3.5rem;
+            width: 6rem;
+            margin-left: .2rem;
+            font-size: 26px;
+            border-radius: 10px;
+            background-color:rgb(0, 0, 0);
+            font-family: "Montserrat", sans-serif;
+
+            color: rgb(200, 202, 200);
+            transition: .3s;
+        }
+
+        .list-of-todos {
+            margin: 3rem auto;
+            width: 40rem;
+            height: 60vh;
+        }
+
+        .delete-btn {
+            float: right;
+            border-radius: 5px;
+            margin-right: .5rem;
+            margin-top: .3rem;
+            width: 6rem;
+            height: 2.2rem;
+            transition: .3s;
+            font-size: 1.5rem;
+            -webkit-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+            box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+        }
+
+        
+        .todo {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            margin-top: .5rem;
+            margin-left: 1rem;
+            width: 100%;
+            font-size: 2rem;
+            height: 3rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .todo-box {
+            border: 1px solid red;
+            width: 35rem;
+        }
+
+        .todo-btn-form {
+            margin: -1.5rem;
+            margin-right: .5rem;
+        }
+
+        .developer {
+            font-size: 1.2rem;
+            padding-top: 12rem;
+            font-family: 'Open Sans', sans-serif;
+            width: 15rem;
+        }
+        
     }
 
 </style>
@@ -83,8 +251,21 @@
     <span class="logo">Todoish</span>
     <span class="account">Logged in as <b>{{ accountStuff }}</b> | <a class="logout-btn" href="http://localhost:8000/api/user/logout">Logout</a></span>
 </nav>
-<form action="http://localhost:8000/addtodo" method="POST">
-    <p class="signupMsg">{{ todoErrMsg }}</p>
-    <input type="text" placeholder="Todo..." class="todo" name="todo" required>
+<form action="http://localhost:8000/addtodo" class="create-todo-form" method="POST">
+    <p class="signupMsg">*Todos may not be over 40 characters, nor can multiple of same todo exist</p>
+    <input type="text" placeholder="Todo..." class="todo-input" name="todo" required maxlength="40">
+    <input type="text" style="display:none;" name="accountName" value="{{accountStuff}}">
     <input type="submit" value="Add" class="submit">
 </form>
+<div class="list-of-todos">
+    <form action="http://localhost:8000/deletetodo" class="todo-btn-form" method="POST">
+        <input type="text" style="display:none;" name="usersName" value={{accountStuff}}>
+        {{#each todos}}
+            <div class="todo">
+                <span>{{this}}</span>
+                <button value="{{this}}" name="delete_todo" method="POST" class="delete-btn">Delete</button>
+            </div>
+         {{/each}}
+    </form>
+</div>
+<p class="developer">Developed by Philip Hilding</p>

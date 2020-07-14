@@ -10,7 +10,6 @@
 /* Remove default styling */
 
 /* Styling for login and form stuff */
-
 .form-section {
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
@@ -87,15 +86,96 @@ form {
 
 /* Styling for login and form stuff */
 
+/* for mobiles etc */
+@media only screen and  (min-width: 400px) and (max-width: 1000px) {
 
-/* TODO page where users todos are displayed */
+    .form-section {
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 30px;
+        box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+        height: 45em;
+        width: 40em;
+        margin: 20vh auto;
+        overflow: hidden;
+    }
 
-.todo-nav {
-    background-color: red;
-    height: 2vh;
-    width: 100vw;
-}
+    .signup-section {
+        height: 50em;
+    }
+    
+    .greeting {
+        font-family: serif;
+        font-size: 3rem;
+        margin-top: 1em;
+    }
+    
+    .login-header {
+        text-align: center;
+        font-size: 4rem;
+        letter-spacing: 1px;
+        margin-top: 1em;
+        text-decoration: underline;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    form {
+        width: 28rem;
+        height: 20rem;
+        margin: 0 auto;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+    }
+    
+    .input-box {
+        border-radius: 10px;
+        height: 3rem;
+        width: 28rem;
+        margin-top: .5rem;
+        background-color: rgba(80, 72, 72, 0.3);
+        color: rgba(39, 34, 34, 0.9);
+        font-size: 1.5rem;
+    }
 
-.account {
-    color: red;
+    .input-desc-text {
+        margin-top: .5rem;
+        font-size: 1.5rem;
+    }
+    
+    .input-btn {
+        color: white;
+        background-color: black;
+        height: 3rem;
+        width: 10rem;
+        font-size: 1.5rem;
+        border: 1px solid rgba(192, 192, 192, 0.6);
+        border-radius: 10px;
+        margin-top: 1em;
+        transition: .3s;
+    }
+    
+    .input-btn:hover {
+        background-color: rgba(0, 0, 0, 0.9);
+        color: rgba(192, 192, 192, 0.9);
+        cursor: pointer;
+    }
+    
+    .sign-in-redirect {
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        margin-top: 4rem;
+        font-size: 2rem;
+    }
+    
+    .sign-up-redirect {
+        margin-top: 10rem;
+    }
+    
+    .signupMsg {
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        margin-top: 5em;
+        font-size: 1rem;
+        color: red;
+    }
+    
 }

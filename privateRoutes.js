@@ -17,6 +17,7 @@ mongoose.connect("mongodb://localhost:27017/todo_app", {
     }).catch(err => {
         console.log(err);
 });
+let createNewTodo = mongoose.model("todo");
 let newAccount = mongoose.model('newAccount');
 app.use('/static', express.static(path.join(__dirname, "/views/static")))
 
@@ -35,7 +36,24 @@ router.get("/", verify, (req, res) => {
  
         //If the user exist, return the data from the user
         if(user) {
-            res.render("todo", { accountStuff: user.username})
+            //Search in database for todos containing clients username, and then send those to handlebars frontend
+            createNewTodo.find({ "usersID": user.username }, (err, todos) => {
+                if(err) console.log(err);
+
+                if(todos) {
+                    //console.log(todos);
+                    let todoStringVar = JSON.stringify(todos, ["todo"]);
+                    let todoArrayVar = JSON.parse(todoStringVar);
+                    let todoItemsInArray = [];
+                    for(i=0;i<Object.values(todoArrayVar).length;i++) {
+                        todoItemsInArray.push(Object.values(todoArrayVar[i]));
+                    }
+                    console.log(todoItemsInArray);
+                    
+                    //console.log(todoItem);
+                    res.render("todo", { accountStuff: user.username, todos: todoItemsInArray })
+                }
+            })
         } 
 
 
