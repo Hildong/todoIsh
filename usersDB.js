@@ -71,7 +71,7 @@ function createUser(uname, pwd, response) {
                     console.log(err)
                 })
             
-                response.redirect("/");
+                response.redirect("https://todoappbyphiliphilding.herokuapp.com/");
         }
     })
 }
