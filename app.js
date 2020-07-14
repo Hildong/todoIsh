@@ -92,7 +92,8 @@ app.post("/signindata", async (req, res) => {
                 //Use JWT to authorize and send a token to user 
                 let payload = { _id: user._id };
                 const token = jwt.sign({payload}, process.env.SECRET_TOKEN, { expiresIn: "1h" });
-                res.cookie("token", token).redirect("https://todoappbyphiliphilding.herokuapp.com/api/user");
+                console.log(token + " sa")
+                res.cookie("token", token).redirect("/api/user");
             } else {
                 res.render("login", { loginErr: "Username and password doesn't match" })
             }
