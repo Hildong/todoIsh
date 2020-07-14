@@ -9,7 +9,7 @@ app.use(cookieParser())
 
 module.exports = function (req, res, next) {
     let token = undefined
-    const authHeader = req.headers["Cookie"].split(" ")[1]
+    const authHeader = req.headers["cookie"].split(" ")[1]
     console.log(authHeader)
     if(authHeader !== undefined) {
         token = authHeader.substring(6)
