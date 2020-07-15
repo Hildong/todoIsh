@@ -20,7 +20,8 @@ module.exports = function (req, res, next) {
         if(err) {
             console.log(err)
             res.status(403).send("Access denied");
-        } else {  
+        } else { 
+            console.log(user) 
             req.user = user;
             next();
         }
