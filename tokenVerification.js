@@ -12,7 +12,7 @@ module.exports = function (req, res, next) {
     const authHeader = req.headers["cookie"]//.split(" ")[1]
     console.log(authHeader)
     if(authHeader !== undefined) {
-        token = authHeader.substring(6)
+        token = authHeader.split(" ")[1].substring(6)
         console.log(token)
     }else if(token === null || token === undefined) return res.status(403).redirect(`https://todoappbyphiliphilding.herokuapp.com/`);
 
