@@ -72,10 +72,17 @@ app.get("/api", (req, res) => {
 
 //POST requests for user data
 app.post("/signupdata", (req, res) => {
+    let letterNumber = /^[0-9a-zA-Z]+$/;
     if(req.body.pwd != req.body.pwdconfirmation) {
         res.render("signup", { signupMsg: "Passwords not matching" })
-    } else {
+    } else if(req.body.pwd.length < 8) {
+        res.render("signup", { signupMsg: "Password need to be longer than 8 characters." })
+    } else if(/\d/.test(req.body.pwd) === false && /[a-z]/i.test(req.body.pwd) === false) {
+        res.render("signup", { signupMsg: "Password needs to contain both letters and numbers." })
+    } else if(/^[0-9a-zA-Z]+$/.test(req.body.pwd)) {
         db.createUser(req.body.username, req.body.pwd, res);
+    } else {
+        res.render("signup", { signupMsg: "Password needs to be atleast 8 characters long and contain only numbers and english letters." })
     }
 })
 
