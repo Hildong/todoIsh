@@ -91,7 +91,7 @@ app.post("/signindata", async (req, res) => {
             if(user.password === req.body.pwd) {
                 //Use JWT to authorize and send a token to user 
                 let payload = { _id: user._id };
-                const token = jwt.sign({payload}, "asjkoIIJFAOKJidsjdsijasojii9jiad", { expiresIn: "1h" });
+                const token = jwt.sign({payload}, process.env.SECRET_TOKEN, { expiresIn: "1h" });
                 console.log(token + " sa")
                 res.cookie("token", token).send(token);
             } else {
