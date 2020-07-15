@@ -22,7 +22,7 @@ module.exports = function (req, res, next) {
             res.status(403).send("Access denied");
         } else {  
             req.user = user;
-            res.status(403).send("token varified")
+            next();
         }
     })
 }
