@@ -93,7 +93,7 @@ app.post("/signindata", async (req, res) => {
                 let payload = { _id: user._id };
                 const token = jwt.sign({payload}, process.env.SECRET_TOKEN, { expiresIn: "1h" });
                 console.log(token + " sa")
-                res.cookie("token", token).redirect("https://todoappbyphiliphilding.herokuapp.com/api/user");
+                res.cookie("token", token).redirect("/api/user");
             } else {
                 res.render("login", { loginErr: "Username and password doesn't match" })
             }

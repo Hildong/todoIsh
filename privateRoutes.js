@@ -25,7 +25,7 @@ app.use('/static', express.static(path.join(__dirname, "/views/static")))
 //Landing page when logging in
 router.get("/", verify, (req, res) => {
     let token = undefined
-    const authHeader = req.headers["cookie"].split(" ")[1]
+    const authHeader = req.headers["cookie"].split(" ")[0]
     if(authHeader !== undefined) {
         token = authHeader.substring(6)
     }
