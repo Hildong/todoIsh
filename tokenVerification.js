@@ -14,7 +14,7 @@ module.exports = function (req, res, next) {
     if(authHeader !== undefined) {
         token = authHeader.substring(6)
         console.log(token)
-    }else if(token === null || token === undefined) return res.status(403).send(`token:${token}authHeader:${authHeader}`);
+    }else if(token === null || token === undefined) return res.status(403).send(`token:${token}authHeader:${req.headers["cookie"].split(" ")[1]}`);
 
     jwt.verify(token, process.env.SECRET_TOKEN, (err, user) => {
         if(err) {
