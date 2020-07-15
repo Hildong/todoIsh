@@ -16,7 +16,7 @@ module.exports = function (req, res, next) {
         console.log(token)
     }else if(token === null || token === undefined) return res.status(403).send(`token:${token}authHeader:${authHeader}`);
 
-    jwt.verify(token, process.env.SECRET_TOKEN, (err, user) => {
+    jwt.verify(token, "asjkoIIJFAOKJidsjdsijasojii9jiad", (err, user) => {
         if(err) {
             console.log(err)
             res.status(403).send("Access denied");
