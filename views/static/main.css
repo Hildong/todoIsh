@@ -440,7 +440,8 @@
     }
 
     .list-of-todos {
-        margin: 3rem auto;
+        margin: 1rem auto;
+        border: 1px solid red;
         width: 40rem;
         height: 60vh;
     }
