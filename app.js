@@ -77,7 +77,7 @@ app.post("/signupdata", (req, res) => {
         res.render("signup", { signupMsg: "Passwords not matching" })
     } else if(req.body.pwd.length < 8) {
         res.render("signup", { signupMsg: "Password need to be longer than 8 characters." })
-    } else if(!/\d/.test(req.body.pwd) && !/[a-z]/i.test(req.body.pwd)) {
+    } else if(/.*?(?:[a-z].*?[0-9]|[0-9].*?[a-z]).*?/i.test(req.body.pwd) === false) {
         res.render("signup", { signupMsg: "Password needs to contain both letters and numbers." })
     } else if(/^[0-9a-zA-Z]+$/.test(req.body.pwd)) {
         db.createUser(req.body.username, req.body.pwd, res);
