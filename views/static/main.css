@@ -1,15 +1,22 @@
+/* -- IMPORT GOOGLE FONTS -- */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300&display=swap');
 
-/* Remove default styling */
+/* -- IMPORT GOOGLE FONTS -- */
+
+
+/* -- Remove default styling -- */
 
 * {
     margin: 0;
     padding: 0;
 }
 
-/* Remove default styling */
+/* -- Remove default styling -- */
 
-/* Styling for login and form stuff */
+
+/* -- Styling for login and form stuff -- */
+
 .form-section {
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
@@ -18,6 +25,10 @@
     width: 20em;
     margin: 20vh auto;
     overflow: hidden;
+}
+
+.login-section {
+    height: 23em;
 }
 
 .greeting {
@@ -38,7 +49,7 @@
 .login-form {
     width: 13em;
     height: 12em;
-    margin: 2em auto;
+    margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
 }
@@ -69,24 +80,176 @@
     cursor: pointer;
 }
 
-.sign-in-redirect {
+.sign-in-redirect, .sign-up-redirect {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
-    margin-top: 1em;
+    margin-top: .5rem;
     font-size: 14px;
 }
 
-.signupMsg {
+.sign-up-redirect {
+    margin-top: 2.5rem;
+}
+
+.signupMsg, .signinMsg {
     text-align: center;
     font-family: "Montserrat", sans-serif;
-    margin-top: 5em;
-    font-size: 14px;
+    width: 18rem;
+    margin: 0 auto;
+    font-size: 13px;
     color: red;
 }
 
-/* Styling for login and form stuff */
+.signinMsg {
+    margin-top: 2rem;
+}
 
-/* for mobiles etc */
+.signupMsg {
+    margin-top: 4rem;
+}
+
+/* -- Styling for login and form stuff -- */
+
+
+
+/* -- Styling for landing page -- */
+
+.todo-nav {
+    height: 10vh;
+    width: 100vw;
+    border-bottom: .5px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
+}
+
+.logo {
+    margin-left: 1rem;
+    position: absolute;
+    margin-top: 1.5rem;     
+    font-size: 1.2rem;
+}
+
+.account {
+    float: right;
+    margin-right: 1.5rem;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    font-size: 1.2rem;
+}
+
+.logout-btn {
+    text-decoration: none;
+    transition: 0.3s;
+    color: rgb(88, 110, 88);
+    font-weight: bold;
+}
+
+.logout-btn:visited {
+    color: rgb(111, 206, 111);
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    color: rgb(194, 216, 154);
+}
+
+.create-todo-form {
+    width: 35rem;
+    margin: 3rem auto;
+}
+
+.todo-input {
+    height: 2rem;
+    width: 29rem;
+    font-size: 1rem;
+}
+
+.submit {
+    height: 2rem;
+    width: 5rem;
+    border-radius: 10px;
+    background-color:rgb(194, 216, 154);
+    transition: .3s;
+    background-color:rgb(0, 0, 0);
+    font-family: "Montserrat", sans-serif;
+    color: rgb(200, 202, 200);
+}
+
+.submit:hover {
+    cursor: pointer;
+    background-color: rgb(111, 206, 111);
+}
+
+
+.list-of-todos {
+    margin: 3rem auto;
+    width: 35rem;
+    height: 60vh;
+}
+
+.delete-btn {
+    margin-right: .5rem;
+}
+
+.delete-btn, .edit-btn {
+    float: right;
+    border-radius: 5px;
+    width: 4.5rem;
+    height: 1.5rem;
+    transition: .3s;
+    -webkit-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+}
+
+.delete-btn:hover, .edit-btn:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.todo {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 100%;
+    height: 2rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.todo-box {
+    border: 1px solid red;
+    width: 35rem;
+}
+
+.todo-btn-form {
+    margin: -1.5rem;
+    margin-right: .5rem;
+}
+
+.developer {
+    font-size: .8rem;
+    padding-top: .5rem;
+    font-family: 'Open Sans', sans-serif;
+    width: 13rem;
+}
+
+.list-of-todos {
+    margin: 3rem auto;
+    width: 35rem;
+    height: 60vh;
+}
+
+.username {
+    display: none;
+}
+
+
+/* -- Styling for landing page -- */
+
+
+/* -- MEDIA QUERYS (Mobile and smaller screen designs) FOR LOGIN AND SIGNUP PAGE -- */
+
 @media only screen and  (min-width: 400px) and (max-width: 1000px) {
 
     .form-section {
@@ -170,7 +333,7 @@
         margin-top: 10rem;
     }
     
-    .signupMsg {
+    .signupMsg, .signinMsg {
         text-align: center;
         font-family: "Montserrat", sans-serif;
         margin-top: 5em;
@@ -180,197 +343,11 @@
     
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+/* -- MEDIA QUERYS (Mobile and smaller screen designs) FOR LOGIN AND SIGNUP PAGE -- */
 
-body{
-    margin: 0;
-    padding: 0;
-}
 
-.todo-nav {
-    height: 10vh;
-    width: 100vw;
-    border-bottom: .5px solid rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.75);
-}
+/* -- MEDIA QUERYS (Mobile and smaller screen designs) FOR USERS LANDING PAGE -- */
 
-.logo {
-    margin-left: 1rem;
-    position: absolute;
-    margin-top: 1.5rem;     
-    font-size: 1.2rem;
-}
-
-.account {
-    float: right;
-    margin-right: 1.5rem;
-    margin-top: 1.5rem;
-    font-size: 1rem;
-    font-size: 1.2rem;
-}
-
-.logout-btn {
-    text-decoration: none;
-    transition: 0.3s;
-    color: rgb(88, 110, 88);
-    font-weight: bold;
-}
-
-.logout-btn:visited {
-    color: rgb(111, 206, 111);
-    font-weight: bold;
-}
-
-.logout-btn:hover {
-    color: rgb(194, 216, 154);
-}
-
-.create-todo-form {
-    width: 35rem;
-    margin: 3rem auto;
-}
-
-.todo-input {
-    height: 2rem;
-    width: 29rem;
-    font-size: 1rem;
-}
-
-.submit {
-    height: 2rem;
-    width: 5rem;
-    border-radius: 10px;
-    background-color:rgb(194, 216, 154);
-    transition: .3s;
-    background-color:rgb(0, 0, 0);
-    font-family: "Montserrat", sans-serif;
-    color: rgb(200, 202, 200);
-}
-
-.submit:hover {
-    cursor: pointer;
-    background-color: rgb(111, 206, 111);
-}
-
-.signupMsg {
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
-    margin-top: 1em;
-    margin-bottom: 1rem;
-    font-size: 13px;
-    color: red;
-}
-
-.list-of-todos {
-    margin: 3rem auto;
-    width: 35rem;
-    height: 60vh;
-}
-
-.delete-btn {
-    margin-right: .5rem;
-}
-
-.delete-btn, .edit-btn {
-    float: right;
-    border-radius: 5px;
-    width: 4.5rem;
-    height: 1.5rem;
-    transition: .3s;
-    -webkit-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
-    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
-}
-
-.delete-btn:hover, .edit-btn:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.todo {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    margin-top: 1rem;
-    margin-left: 1rem;
-    width: 100%;
-    height: 2rem;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.todo-box {
-    border: 1px solid red;
-    width: 35rem;
-}
-
-.todo-btn-form {
-    margin: -1.5rem;
-    margin-right: .5rem;
-}
-
-.developer {
-    font-size: .8rem;
-    padding-top: .5rem;
-    font-family: 'Open Sans', sans-serif;
-    width: 13rem;
-}
-
-.list-of-todos {
-    margin: 3rem auto;
-    width: 35rem;
-    height: 60vh;
-}
-
-.delete-btn {
-    margin-right: .5rem;
-}
-
-.delete-btn, .edit-btn {
-    float: right;
-    border-radius: 5px;
-    width: 4.5rem;
-    height: 1.5rem;
-    transition: .3s;
-    -webkit-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
-    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
-}
-
-.delete-btn:hover, .edit-btn:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.todo {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    margin-top: 1rem;
-    margin-left: 1rem;
-    width: 100%;
-    height: 2rem;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.todo-box {
-    border: 1px solid red;
-    width: 35rem;
-}
-
-.todo-btn-form {
-    margin: -1.5rem;
-    margin-right: .5rem;
-}
-
-.developer {
-    font-size: .8rem;
-    padding-top: .5rem;
-    font-family: 'Open Sans', sans-serif;
-    width: 13rem;
-}
-
-.username {
-    display: none;
-}
 @media only screen and  (min-width: 400px) and (max-width: 1000px) {
     /* For tablets: */
     .todo-nav {
@@ -480,3 +457,5 @@ body{
     }
     
 }
+
+/* -- MEDIA QUERYS (Mobile and smaller screen designs) FOR USERS LANDING PAGE -- */
