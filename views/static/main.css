@@ -465,15 +465,15 @@
         border-bottom: 1px solid rgba(0, 0, 0, 0.3);
         margin-top: .5rem;
         margin-left: 1rem;
-        width: 100%;
+        width: 50rem;
         font-size: 2rem;
         height: 3rem;
         font-family: 'Open Sans', sans-serif;
+        border: 1px solid red;
     }
 
     .todo-box {
-        border: 1px solid red;
-        width: 50rem;
+        width: 100%;
     }
 
     .todo-btn-form {
