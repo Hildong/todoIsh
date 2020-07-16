@@ -407,15 +407,14 @@
         font-family: "Montserrat", sans-serif;
         width: 25rem;
         margin: 0 auto;
-        font-size: 13px;
+        font-size: 1.2rem;
         color: black;
     }
     
 
     .create-todo-form {
         width: 41rem;
-        height: 10rem;
-        border: 1px solid;
+        height: 11rem;
         margin: 0 auto;
         margin-top: 3rem;
     }
@@ -467,7 +466,7 @@
         border-bottom: 1px solid rgba(0, 0, 0, 0.3);
         margin-top: .5rem;
         margin-left: 1rem;
-        width: 40rem;
+        width: 41rem;
         font-size: 2rem;
         height: 3rem;
         font-family: 'Open Sans', sans-serif;
