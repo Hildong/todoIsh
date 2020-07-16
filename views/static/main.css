@@ -10,7 +10,6 @@
 * {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
 /* -- Remove default styling -- */
@@ -402,6 +401,7 @@
         height: 3.5rem;
         width: 34rem;
         font-size: 2rem;
+        margin-top: 1rem;
         border: 1px solid rgba(0,0,0,0.5);
     }
 
@@ -409,6 +409,7 @@
         height: 3.5rem;
         width: 6rem;
         margin-left: .2rem;
+        margin-top: 1rem;
         font-size: 26px;
         border-radius: 10px;
         background-color:rgb(0, 0, 0);
