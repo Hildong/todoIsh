@@ -342,14 +342,14 @@
     .sign-in-redirect{
         font-family: 'Montserrat', sans-serif;
         text-align: center;
-        margin-top: 15rem;
+        margin-top: 5rem;
         font-size: 1.5rem;
     }
     
     .sign-up-redirect {
         font-family: 'Montserrat', sans-serif;
         text-align: center;
-        margin-top: 2rem;
+        margin-top: 6rem;
         font-size: 1.5rem;
     }
     
@@ -358,7 +358,7 @@
         font-family: "Montserrat", sans-serif;
         width: 18rem;
         margin: 0 auto;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         color: red;
     }
     
