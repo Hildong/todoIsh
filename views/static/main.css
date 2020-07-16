@@ -414,6 +414,8 @@
 
     .create-todo-form {
         width: 41rem;
+        height: 10rem;
+        border: 1px solid;
         margin: 0 auto;
         margin-top: 3rem;
     }
