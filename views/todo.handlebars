@@ -4,6 +4,7 @@
 </nav>
 <form action="https://todoappbyphiliphilding.herokuapp.com/addtodo" class="create-todo-form" method="POST">
     <p class="todoErrMsg">*Todos may not be over 40 characters, nor can multiple of same todo exist</p>
+    <br>
     <input type="text" placeholder="Todo..." class="todo-input" name="todo" required maxlength="40">
     <input type="text" style="display:none;" class="username" name="accountName" value="{{accountStuff}}">
     <input type="submit" value="Add" class="submit">
