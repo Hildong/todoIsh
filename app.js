@@ -7,7 +7,6 @@ const cookieParser = require("cookie-parser");
 const privateRoutes = require("./privateRoutes.js");
 const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose");
-const verify = require("./tokenVerification.js");
 require('dotenv').config()
 
 
@@ -21,11 +20,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/todo_app"
         console.log(err);
 });
 
-let day = new Date().getDay();
 const app = express();
 const port = process.env.PORT || 8000;
 let newAccount = mongoose.model('newAccount');
-let createNewTodo = mongoose.model("todo");
 
 
 
@@ -91,9 +88,7 @@ app.post("/signupdata", (req, res) => {
 app.post("/signindata", async (req, res) => {
     newAccount.findOne({ "username": req.body.username }, (err, user) => {
         //Console.log potential errors
-        if(err) {
-            console.log(err)
-        }
+        if(err) return console.log(err)
 
         //If user exists, check if inputted password matches users password
         if(user) {
@@ -101,7 +96,6 @@ app.post("/signindata", async (req, res) => {
                 //Use JWT to authorize and send a token to user 
                 let payload = { _id: user._id };
                 const token = jwt.sign({payload}, process.env.SECRET_TOKEN, { expiresIn: "1h" });
-                console.log(token + " sa")
                 res.cookie("token", token).redirect("/api/user");
             } else {
                 res.render("login", { loginErr: "Username and password doesn't match" })
@@ -115,7 +109,6 @@ app.post("/signindata", async (req, res) => {
 app.post("/addtodo", (req, res) => {
     if(req.body.todo != "" && req.body.todo != " ") {
         db.createTodo(req, res, req.body.todo, req.body.accountName);
-        console.log("Successfully added todo");
     } else {
         res.render("todo", {todoErrMsg: "Cannot add empty todo"});
     }
@@ -123,7 +116,6 @@ app.post("/addtodo", (req, res) => {
 
 app.post("/deletetodo", (req, res) => {
     db.deleteTodo(req, res, req.body.delete_todo, req.body.usersName)
-    console.log(req.body)
 })
 
 //404 Route

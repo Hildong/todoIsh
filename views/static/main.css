@@ -300,12 +300,17 @@
         font-family: 'Montserrat', sans-serif;
         font-size: 14px;
     }
+
+    .login-form  {
+        width: 23rem;
+    }
     
     .input-box {
         border-radius: 10px;
         height: 3rem;
-        width: 28rem;
+        width: 23rem;
         margin-top: .5rem;
+        margin-right:15px;
         background-color: rgba(80, 72, 72, 0.3);
         color: rgba(39, 34, 34, 0.9);
         font-size: 1.5rem;
@@ -334,25 +339,36 @@
         cursor: pointer;
     }
     
-    .sign-in-redirect {
+    .sign-in-redirect{
         font-family: 'Montserrat', sans-serif;
         text-align: center;
-        margin-top: 4rem;
-        font-size: 2rem;
+        margin-top: 15rem;
+        font-size: 1.5rem;
     }
     
     .sign-up-redirect {
-        margin-top: 10rem;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        margin-top: 16rem;
+        font-size: 1.5rem;
     }
     
     .signupMsg, .signinMsg {
         text-align: center;
         font-family: "Montserrat", sans-serif;
-        margin-top: 5em;
-        font-size: 1rem;
+        width: 18rem;
+        margin: 0 auto;
+        font-size: 13px;
         color: red;
     }
     
+    .signinMsg {
+        margin-top: 2rem;
+    }
+    
+    .signupMsg {
+        margin-top: 4rem;
+    }
 }
 
 /* -- MEDIA QUERYS (Mobile and smaller screen designs) FOR LOGIN AND SIGNUP PAGE -- */

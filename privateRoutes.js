@@ -1,7 +1,5 @@
 const router = require("express").Router();
-const jwt = require("jsonwebtoken")
 const jwtDecode = require("jwt-decode")
-const exhbs = require("express-handlebars");
 const path = require("path");
 const verify = require("./tokenVerification.js");
 require('dotenv').config()
@@ -39,7 +37,7 @@ router.get("/", verify, (req, res) => {
         if(user) {
             //Search in database for todos containing clients username, and then send those to handlebars frontend
             createNewTodo.find({ "usersID": user.username }, (err, todos) => {
-                if(err) console.log(err);
+                if(err) return console.log(err);
 
                 if(todos) {
                     //console.log(todos);
@@ -49,7 +47,6 @@ router.get("/", verify, (req, res) => {
                     for(i=0;i<Object.values(todoArrayVar).length;i++) {
                         todoItemsInArray.push(Object.values(todoArrayVar[i]));
                     }
-                    console.log(todoItemsInArray);
                     
                     //console.log(todoItem);
                     res.render("todo", { accountStuff: user.username, todos: todoItemsInArray })
