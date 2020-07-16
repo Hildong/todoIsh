@@ -114,6 +114,10 @@
 
 /* -- Styling for landing page -- */
 
+.todo-landingpage {
+    overflow-x: hidden;
+}
+
 .todo-nav {
     height: 10vh;
     width: 100vw;
@@ -247,7 +251,7 @@
 .todoErrMsg {
     text-align: center;
     font-family: "Montserrat", sans-serif;
-    width: 25rem;
+    width: 30rem;
     margin: 0 auto;
     font-size: 13px;
     color: black;
