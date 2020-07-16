@@ -10,6 +10,7 @@
 * {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 /* -- Remove default styling -- */
@@ -244,6 +245,14 @@
     display: none;
 }
 
+.todoErrMsg {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    width: 25rem;
+    margin: 0 auto;
+    font-size: 13px;
+    color: black;
+}
 
 /* -- Styling for landing page -- */
 
@@ -374,14 +383,15 @@
         font-size: 2rem;
     }
 
-    .signupMsg {
+    .todoErrMsg {
         text-align: center;
         font-family: "Montserrat", sans-serif;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-size: 18px;
-        color: rgba(0, 0, 0, 0.8);
+        width: 25rem;
+        margin: 0 auto;
+        font-size: 13px;
+        color: black;
     }
+    
 
     .create-todo-form {
         width: 41rem;
