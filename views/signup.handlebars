@@ -1,15 +1,15 @@
-    <section class="form-section signup-section">
-        <h1 class="login-header">Create account</h1>
-        <form action="https://todoappbyphiliphilding.herokuapp.com/signupdata" class="login-form" method="POST"> 
-            <br><label class="input-desc-text">Username:</label><br> 
-            <input class="input-box" type="text" name="username" required>
-            <br><label class="input-desc-text">Password:</label><br> 
-            <input class="input-box" type="password" name="pwd" required>
-            <br><label class="input-desc-text">Confirm password:</label><br> 
-            <input class="input-box" type="password" name="pwdconfirmation" required>
-            <br>
-            <input class="input-btn" type="submit">
-        </form>
-        <p class="signupMsg">{{ signupMsg }}<span style="opacity: 0;">-</span></p>
-        <p class="sign-up-redirect">Already have an account? <a href="/login">Sign in</a></p>
-    </section>
+<section class="form-section signup-section">
+    <h1 class="login-header">Create account</h1>
+    <form action="https://todoappbyphiliphilding.herokuapp.com/signupdata" class="login-form" method="POST"> 
+        <br><label class="input-desc-text">Username:</label><br> 
+        <input class="input-box" type="text" name="username" required>
+        <br><label class="input-desc-text">Password:</label><br> 
+        <input class="input-box" type="password" name="pwd" required>
+        <br><label class="input-desc-text">Confirm password:</label><br> 
+        <input class="input-box" type="password" name="pwdconfirmation" required>
+        <br>
+        <input class="input-btn" type="submit">
+    </form>
+    <p class="signupMsg">{{ signupMsg }}<span style="opacity: 0;">-</span></p>
+    <p class="sign-up-redirect">Already have an account? <a href="/login">Sign in</a></p>
+</section>

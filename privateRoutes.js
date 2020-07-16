@@ -1,3 +1,4 @@
+//Import functions, methods, frameworks etc
 const router = require("express").Router();
 const jwtDecode = require("jwt-decode")
 const path = require("path");
@@ -6,6 +7,7 @@ require('dotenv').config()
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express()
+
 
 //Try to connect to user account database
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/todo_app", {
@@ -16,8 +18,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/todo_app"
     }).catch(err => {
         console.log(err);
 });
+
+
+//Create a variable each for models of the schema to save, delete and read documents to the databases
 let createNewTodo = mongoose.model("todo");
 let newAccount = mongoose.model('newAccount');
+
+//Enable the use of static files, so you know, we can have some css and design, woooo
 app.use('/static', express.static(path.join(__dirname, "/views/static")))
 
 //Landing page when logging in
@@ -68,4 +75,5 @@ router.get("*", (req, res) => {
     res.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user")
 })
 
+//Exports the router to main server file (app.js) so we can use it there
 module.exports = router 

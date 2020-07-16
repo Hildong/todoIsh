@@ -1,3 +1,4 @@
+//Import functions, methods, frameworks etc
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express")
@@ -5,7 +6,7 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const Schema = mongoose.Schema;
 
-
+//Use express function use to enable cookieparser for reading cookie
 app.use(cookieParser())
 
 
@@ -30,6 +31,7 @@ let signupSchema = new Schema({
     }
 });
 
+//Create a new schema for todos and have a usersID (the users name) to see what todo is for what user
 let todoSchema = new Schema({
     todo: {
         type: String
@@ -39,6 +41,7 @@ let todoSchema = new Schema({
     }
 })
 
+//Create a variable each for models of the schema to save, delete and read documents to the databases
 let newAccount = mongoose.model('newAccount', signupSchema);
 let createNewTodo = mongoose.model("todo", todoSchema);
 
@@ -91,6 +94,7 @@ function getUserFromID(request, response, userID) {
     })
 }
 
+//Function to create the todo
 function createTodo(request, response, todoName, userID) {
     //Check if todo already exists
     createNewTodo.findOne({ "todo": todoName, "usersID": userID }, (err, todo) => {
@@ -98,11 +102,13 @@ function createTodo(request, response, todoName, userID) {
             console.log(err);
         }
 
+        //If it does exist, just redirect the user back to the landing page
         if(todo) {
             response.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user")
-        } else if(todoName.length > 40) {
+        } else if(todoName.length > 40) { //If the todo is longer than 40 characters, redirect the users back to the landing page
             response.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user");
         } else {
+            //Else, create and save todo & reidrect user back to the landing page
             let newTodo  = new createNewTodo();
 
             newTodo.todo = todoName;
@@ -123,21 +129,22 @@ function createTodo(request, response, todoName, userID) {
 
 }
 
+//function to the delete todo
 function deleteTodo(request, response, todoName, userName) {
+    //Search if there is a todo in the database that matches the inputted name and the users username
     createNewTodo.findOne({ "usersID": userName, "todo": todoName }, (err, todo) => {
-        if(err) console.log(err);
+        //If there is any error, log that error to the console
+        if(err) console.log(err); 
 
+        //If the todo exist, delete it and redirect user back to landing page, else redirect the user anyways, but nothing more
         if(todo) {
             todo.remove();
             response.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user")
         } else {
-            console.log(todoName + " " + userName)
             response.redirect("https://todoappbyphiliphilding.herokuapp.com/api/user")
-
         }
     }) 
 }
 
 //Export modules for use in the main server app
-//module.exports = newAccount
 module.exports = { createUser, getUserFromID, createTodo, deleteTodo }
